@@ -24,7 +24,7 @@ services:
     depends_on:
       - fs-test-db
     volumes:
-      - ./backend:/usr/src/app
+      - ./backend/src:/app/src
   fs-test-frontend:
     build:
       context: .
