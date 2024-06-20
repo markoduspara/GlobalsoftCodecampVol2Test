@@ -1,0 +1,42 @@
+version: '3.8'
+name: fs-test
+services:
+  fs-test-db:
+    image: mysql:8.0
+    command: --default-authentication-plugin=mysql_native_password
+    container_name: fs-test-db
+    env_file:
+      - ./backend/.env
+    ports:
+      - '3306:3306'
+    volumes:
+      - mysql_data:/var/lib/mysql
+      - './database/01_schema.sql:/docker-entrypoint-initdb.d/01_schema.sql'
+  fs-test-backend:
+    build:
+      context: .
+      dockerfile: ./backend/docker/Dockerfile
+    container_name: fs-test-backend
+    env_file:
+      - ./backend/.env
+    ports:
+      - '3000:3000'
+    depends_on:
+      - fs-test-db
+    volumes:
+      - ./backend:/usr/src/app
+  fs-test-frontend:
+    build:
+      context: .
+      dockerfile: ./frontend/docker/Dockerfile
+    container_name: fs-test-frontend
+    env_file:
+      - ./frontend/.env
+    ports:
+      - '3001:3000'
+    volumes:
+      - './frontend:/app'
+      - '/app/node_modules'
+
+volumes:
+  mysql_data:
