@@ -42,6 +42,7 @@ Izradite web aplikaciju koja omogućava korisnicima da dodaju, pregledaju, i bri
 **Dodatni zahtjevi**
 
 1.  Implementirajte migraciju kako bi ste omogućili spremanje grayscale u bazu
+
 2.  Implementirajte CSS na frontendu baziran na vrijednosti grayscale dobivene iz baze. (npr: _img {  
     -webkit-filter: grayscale(100%);  
     filter: grayscale(100%);  
