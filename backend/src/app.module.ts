@@ -2,7 +2,9 @@ import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { ImageModule } from './image/image.module';
 import 'dotenv/config';
+import { Image } from './image/entities/image.entity';
 
 @Module({
   imports: [
@@ -13,8 +15,10 @@ import 'dotenv/config';
       username: process.env.MYSQL_USER,
       password: process.env.MYSQL_PASSWORD,
       database: process.env.MYSQL_DATABASE,
-      entities: [],
+      entities: [Image],
+      synchronize: true
     }),
+    ImageModule,
   ],
   controllers: [AppController],
   providers: [AppService],
