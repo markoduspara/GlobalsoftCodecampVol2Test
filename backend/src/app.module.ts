@@ -2,19 +2,22 @@ import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { WebimagesModule } from './webimages/webimages.module';
 import 'dotenv/config';
+import { WebImages } from './webimages/entities/webimages.entity';
 
 @Module({
   imports: [
     TypeOrmModule.forRoot({
       type: 'mysql',
-      host: process.env.DB_HOST,
-      port: parseInt(process.env.DB_PORT),
-      username: process.env.MYSQL_USER,
-      password: process.env.MYSQL_PASSWORD,
-      database: process.env.MYSQL_DATABASE,
-      entities: [],
+      host: 'fs-test-db',
+      port: 3306,
+      username: 'user',
+      password: 'password',
+      database: 'test_db',
+      entities: [WebImages],
     }),
+    WebimagesModule,
   ],
   controllers: [AppController],
   providers: [AppService],

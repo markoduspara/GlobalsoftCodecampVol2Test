@@ -6,12 +6,12 @@ config({ path: resolve(__dirname, '.env') });
 
 const DataSourceConfig = new DataSource({
   type: 'mysql',
-  host: process.env.DB_HOST,
-  port: parseInt(process.env.DB_PORT),
-  username: process.env.MYSQL_USER,
-  password: process.env.MYSQL_PASSWORD,
-  database: process.env.MYSQL_DATABASE,
-  migrations: ['./dist/migrations/*'],
+  host: 'fs-test-db',
+  port: 3306,
+  username: "user",
+  password: "password",
+  database: "test_db",
+  migrations: ['./src/migrations/*'],
   synchronize: false,
   migrationsTableName: 'migrations',
 });
