@@ -2,11 +2,11 @@ FROM node:20.11-alpine3.19
 ENV NODE_ENV dev
 WORKDIR /app
 
-COPY ./backend/package*.json .
+COPY ./backend/package*.json ./
 
 RUN npm install
 
-COPY ./backend .
+COPY ./backend ./
 
 RUN npm run build
 
