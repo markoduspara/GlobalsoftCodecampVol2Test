@@ -8,6 +8,10 @@ services:
     volumes:
       - mysql_data:/var/lib/mysql
       - './database/01_schema.sql:/docker-entrypoint-initdb.d/01_schema.sql'
+    env_file:
+      - ./backend/.env
+    ports:
+      - '3306:3306'
   fs-test-backend:
     build:
       context: .
@@ -17,6 +21,8 @@ services:
       - fs-test-db
     volumes:
       - ./backend/src:/app/src
+    ports:
+      - '3000:3000'
   fs-test-frontend:
     build:
       context: .
@@ -25,6 +31,8 @@ services:
     volumes:
       - './frontend:/app'
       - '/app/node_modules'
+    ports:
+      - '3001:3000'
 
 volumes:
   mysql_data:
