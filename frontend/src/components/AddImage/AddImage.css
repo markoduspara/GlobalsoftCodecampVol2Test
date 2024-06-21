@@ -1,0 +1,14 @@
+.addImageButton {
+  width: 50px;
+  height: 50px;
+  background-color: blue;
+}
+
+.addImageButton:disabled {
+  background: #98d4ff;
+  pointer-events: none;
+}
+
+.addImageButton:hover {
+  background: #2da4f9;
+}

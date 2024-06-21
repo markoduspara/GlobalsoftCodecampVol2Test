@@ -8,6 +8,7 @@ CREATE TABLE IF NOT EXISTS web_images (
     image_name VARCHAR(100) NOT NULL,
     image_description VARCHAR(255) NULL,
     image_link VARCHAR(255) NOT NULL,
+    grayscale TINYINT(1) DEFAULT '1',
     created_at TIMESTAMP    DEFAULT CURRENT_TIMESTAMP NOT NULL,
     updated_at TIMESTAMP    DEFAULT CURRENT_TIMESTAMP NOT NULL ON UPDATE CURRENT_TIMESTAMP,
     deleted_at TIMESTAMP    NULL,
@@ -15,7 +16,7 @@ CREATE TABLE IF NOT EXISTS web_images (
     UNIQUE KEY uk_name (image_name)
 );
 
-INSERT INTO web_images(image_name, image_description, image_link) VALUES
+INSERT INTO web_images (image_name, image_description, image_link) VALUES
 ('test1', 'test', 'https://picsum.photos/id/1/200/300');
 
 
