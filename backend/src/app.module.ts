@@ -2,6 +2,7 @@ import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { PicturesModule } from './pictures/pictures.module';
 import 'dotenv/config';
 
 @Module({
@@ -15,6 +16,7 @@ import 'dotenv/config';
       database: process.env.MYSQL_DATABASE,
       entities: [],
     }),
+    PicturesModule,
   ],
   controllers: [AppController],
   providers: [AppService],
